@@ -1,0 +1,159 @@
+---
+import type { SiteTranslations } from '@/i18n/types';
+const { t } = Astro.props;
+interface Props { t: SiteTranslations; }
+---
+<div class="rounded-xl border border-gray-200 bg-white p-8">
+  <h2 class="mb-1 text-2xl font-extrabold text-primary-900" style="font-family: var(--font-heading);">{t.contact.formTitle}</h2>
+  <p class="mb-6 text-sm text-gray-600">{t.contact.formSubtitle}</p>
+
+  <form id="inquiry-form" class="space-y-5" novalidate>
+    <!-- Name -->
+    <div>
+      <label class="mb-1 block text-sm font-semibold text-gray-700">{t.contact.nameLabel}</label>
+      <input type="text" name="name" required minlength="2"
+        class="w-full rounded-lg border-gray-300 px-4 py-2.5 text-sm focus:border-primary-500 focus:ring-primary-500" />
+      <span class="mt-1 hidden text-xs text-red-600" data-error="name">Please enter your name (min 2 characters).</span>
+    </div>
+
+    <!-- Email + Phone row -->
+    <div class="grid gap-4 sm:grid-cols-2">
+      <div>
+        <label class="mb-1 block text-sm font-semibold text-gray-700">{t.contact.emailLabel}</label>
+        <input type="email" name="email" required
+          class="w-full rounded-lg border-gray-300 px-4 py-2.5 text-sm focus:border-primary-500 focus:ring-primary-500" />
+        <span class="mt-1 hidden text-xs text-red-600" data-error="email">Please enter a valid email address.</span>
+      </div>
+      <div>
+        <label class="mb-1 block text-sm font-semibold text-gray-700">{t.contact.phoneLabel}</label>
+        <input type="tel" name="phone"
+          class="w-full rounded-lg border-gray-300 px-4 py-2.5 text-sm focus:border-primary-500 focus:ring-primary-500" placeholder="+ country code" />
+      </div>
+    </div>
+
+    <!-- Box Specifications heading -->
+    <div class="border-t pt-5">
+      <h3 class="mb-3 text-lg font-bold text-primary-800" style="font-family: var(--font-heading);">{t.contact.boxSpecs}</h3>
+    </div>
+
+    <!-- Dimensions -->
+    <div class="grid gap-4 sm:grid-cols-3">
+      <div>
+        <label class="mb-1 block text-xs font-semibold text-gray-700">{t.contact.lengthLabel}</label>
+        <input type="number" name="length" min="1" placeholder="mm"
+          class="w-full rounded-lg border-gray-300 px-3 py-2 text-sm focus:border-primary-500 focus:ring-primary-500" />
+      </div>
+      <div>
+        <label class="mb-1 block text-xs font-semibold text-gray-700">{t.contact.widthLabel}</label>
+        <input type="number" name="width" min="1" placeholder="mm"
+          class="w-full rounded-lg border-gray-300 px-3 py-2 text-sm focus:border-primary-500 focus:ring-primary-500" />
+      </div>
+      <div>
+        <label class="mb-1 block text-xs font-semibold text-gray-700">{t.contact.heightLabel}</label>
+        <input type="number" name="height" min="1" placeholder="mm"
+          class="w-full rounded-lg border-gray-300 px-3 py-2 text-sm focus:border-primary-500 focus:ring-primary-500" />
+      </div>
+    </div>
+
+    <!-- Material + Quantity row -->
+    <div class="grid gap-4 sm:grid-cols-2">
+      <div>
+        <label class="mb-1 block text-xs font-semibold text-gray-700">{t.contact.materialLabel}</label>
+        <select name="material" class="w-full rounded-lg border-gray-300 px-3 py-2 text-sm focus:border-primary-500 focus:ring-primary-500">
+          <option value="">{t.contact.materialOption1}</option>
+          <option value="K=K">{t.contact.materialOption2}</option>
+          <option value="A=A">{t.contact.materialOption3}</option>
+          <option value="not-sure">{t.contact.materialOption4}</option>
+        </select>
+      </div>
+      <div>
+        <label class="mb-1 block text-xs font-semibold text-gray-700">{t.contact.quantityLabel}</label>
+        <select name="quantity" class="w-full rounded-lg border-gray-300 px-3 py-2 text-sm focus:border-primary-500 focus:ring-primary-500">
+          <option value="500">{t.contact.qty500}</option>
+          <option value="1000">{t.contact.qty1000}</option>
+          <option value="5000">{t.contact.qty5000}</option>
+          <option value="10000+">{t.contact.qty10000}</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Printing -->
+    <fieldset>
+      <legend class="mb-2 text-xs font-semibold text-gray-700">{t.contact.printLabel}</legend>
+      <div class="flex flex-wrap gap-4">
+        <label class="flex items-center gap-2 text-sm"><input type="radio" name="printing" value="none" checked class="text-accent-600 focus:ring-accent-500" /> {t.contact.printNone}</label>
+        <label class="flex items-center gap-2 text-sm"><input type="radio" name="printing" value="flexo" class="text-accent-600 focus:ring-accent-500" /> {t.contact.printFlexo}</label>
+        <label class="flex items-center gap-2 text-sm"><input type="radio" name="printing" value="offset" class="text-accent-600 focus:ring-accent-500" /> {t.contact.printOffset}</label>
+      </div>
+    </fieldset>
+
+    <!-- Message -->
+    <div>
+      <label class="mb-1 block text-sm font-semibold text-gray-700">{t.contact.messageLabel}</label>
+      <textarea name="message" rows="4" placeholder={t.contact.messagePlaceholder}
+        class="w-full rounded-lg border-gray-300 px-4 py-2.5 text-sm focus:border-primary-500 focus:ring-primary-500"></textarea>
+    </div>
+
+    <!-- reCAPTCHA notice -->
+    <p class="rounded-lg bg-gray-100 px-4 py-3 text-xs text-gray-500">{t.contact.recaptchaNotice}</p>
+
+    <!-- Submit -->
+    <button type="submit" class="w-full rounded-lg bg-accent-600 px-8 py-3.5 text-base font-semibold text-white transition hover:bg-accent-700">
+      {t.contact.submitBtn} →
+    </button>
+  </form>
+
+  <!-- Success message (hidden by default) -->
+  <div id="form-success" class="hidden rounded-xl bg-green-50 p-8 text-center">
+    <div class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-green-100 text-3xl text-green-600">✓</div>
+    <h3 class="text-xl font-bold text-green-800">{t.contact.successTitle}</h3>
+    <p class="mt-2 text-green-700">{t.contact.successMessage}</p>
+  </div>
+
+  <!-- Error message (hidden by default) -->
+  <div id="form-error" class="mt-4 hidden rounded-lg bg-red-50 p-4 text-sm text-red-700">{t.contact.errorMessage}</div>
+</div>
+
+<script>
+  const form = document.getElementById('inquiry-form') as HTMLFormElement;
+  const successEl = document.getElementById('form-success')!;
+  const errorEl = document.getElementById('form-error')!;
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    errorEl.classList.add('hidden');
+    form.querySelectorAll('[data-error]').forEach(el => el.classList.add('hidden'));
+
+    let valid = true;
+    const nameInput = form.querySelector<HTMLInputElement>('[name="name"]')!;
+    const emailInput = form.querySelector<HTMLInputElement>('[name="email"]')!;
+    if (!nameInput.value || nameInput.value.trim().length < 2) {
+      form.querySelector('[data-error="name"]')?.classList.remove('hidden');
+      valid = false;
+    }
+    if (!emailInput.value || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value)) {
+      form.querySelector('[data-error="email"]')?.classList.remove('hidden');
+      valid = false;
+    }
+    if (!valid) return;
+
+    const apiUrl = (window as any).QIANXI_CONFIG?.apiUrl;
+    if (!apiUrl) {
+      form.classList.add('hidden');
+      successEl.classList.remove('hidden');
+      return;
+    }
+    try {
+      const formData = new FormData(form);
+      const res = await fetch(apiUrl, { method: 'POST', body: formData });
+      if (res.ok) {
+        form.classList.add('hidden');
+        successEl.classList.remove('hidden');
+      } else {
+        errorEl.classList.remove('hidden');
+      }
+    } catch {
+      errorEl.classList.remove('hidden');
+    }
+  });
+</script>

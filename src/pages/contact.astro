@@ -1,36 +1,28 @@
 ---
-// Import the necessary components
 import MainLayout from '@/layouts/MainLayout.astro';
-import ContactSection from '@components/sections/misc/ContactSection.astro';
-import { SITE } from '@data/constants';
+import InquiryForm from '@components/sections/contact/InquiryForm.astro';
+import ContactSidebar from '@components/sections/contact/ContactSidebar.astro';
+import GoogleMapEmbed from '@components/sections/contact/GoogleMapEmbed.astro';
+import { getTranslations } from '@/i18n/utils';
 
-const pageTitle: string = `Contact | ${SITE.title}`;
-const metaDescription =
-  "Have questions or want to discuss a project? Reach out, and let's craft the perfect solution with our tools and services.";
-const ogTitle = 'Contact Us | ScrewFast';
+const t = getTranslations('en');
 ---
 
-<MainLayout
-  title={pageTitle}
-  customDescription={metaDescription}
-  customOgTitle={ogTitle}
-  structuredData={{
-    '@context': 'https://schema.org',
-    '@type': 'WebPage',
-    '@id': 'https://screwfast.uk/contact',
-    url: 'https://screwfast.uk/contact',
-    name: 'Contact Us | ScrewFast',
-    description:
-      "Have questions or want to discuss a project? Reach out, and let's craft the perfect solution with our tools and services.",
-    isPartOf: {
-      '@type': 'WebSite',
-      url: 'https://screwfast.uk',
-      name: 'ScrewFast',
-      description:
-        'ScrewFast offers top-tier hardware tools and expert construction services to meet all your project needs.',
-    },
-    inLanguage: 'en-US',
-  }}
->
-  <ContactSection />
+<MainLayout>
+  <section class="py-20">
+    <div class="mx-auto max-w-7xl px-4">
+      <h1 class="mb-12 text-center text-4xl font-extrabold text-primary-900" style="font-family: var(--font-heading);">
+        {t.contact.title}
+      </h1>
+      <div class="grid gap-8 lg:grid-cols-3">
+        <div class="lg:col-span-2">
+          <InquiryForm t={t} />
+        </div>
+        <div>
+          <ContactSidebar t={t} />
+        </div>
+      </div>
+    </div>
+  </section>
+  <GoogleMapEmbed />
 </MainLayout>

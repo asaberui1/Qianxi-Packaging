@@ -1,0 +1,43 @@
+---
+import { COMPANY } from '@/data_files/constants';
+import type { SiteTranslations } from '@/i18n/types';
+const { t } = Astro.props;
+interface Props { t: SiteTranslations; }
+---
+
+<div class="space-y-6">
+  <!-- Why Inquiry -->
+  <div class="rounded-xl bg-primary-900 p-8 text-white">
+    <h3 class="mb-4 text-lg font-bold" style="font-family: var(--font-heading);">{t.contact.sidebarWhy}</h3>
+    <ul class="space-y-3 text-sm">
+      <li class="flex items-start gap-2"><span class="mt-0.5 text-accent-400">✓</span> {t.contact.sidebarWhy1}</li>
+      <li class="flex items-start gap-2"><span class="mt-0.5 text-accent-400">✓</span> {t.contact.sidebarWhy2}</li>
+      <li class="flex items-start gap-2"><span class="mt-0.5 text-accent-400">✓</span> {t.contact.sidebarWhy3}</li>
+      <li class="flex items-start gap-2"><span class="mt-0.5 text-accent-400">✓</span> {t.contact.sidebarWhy4}</li>
+      <li class="flex items-start gap-2"><span class="mt-0.5 text-accent-400">✓</span> {t.contact.sidebarWhy5}</li>
+    </ul>
+  </div>
+
+  <!-- Contact Info -->
+  <div class="rounded-xl border border-gray-200 bg-white p-8">
+    <h3 class="mb-4 text-lg font-bold text-primary-800" style="font-family: var(--font-heading);">{t.contact.contactInfo}</h3>
+    <div class="space-y-4 text-sm">
+      <div>
+        <p class="font-semibold text-gray-700">{t.contact.addressLabel}</p>
+        <p class="text-gray-600">{COMPANY.address.en}</p>
+      </div>
+      <div>
+        <p class="font-semibold text-gray-700">{t.contact.emailLabel2}</p>
+        <p class="text-gray-600">{COMPANY.email}</p>
+      </div>
+      <div>
+        <p class="font-semibold text-gray-700">{t.contact.phoneLabel2}</p>
+        <p class="text-gray-600">{COMPANY.phone}</p>
+      </div>
+      <div>
+        <p class="font-semibold text-gray-700">{t.contact.whatsappLabel}</p>
+        <p class="text-gray-600">{COMPANY.whatsapp}</p>
+      </div>
+    </div>
+  </div>
+</div>
