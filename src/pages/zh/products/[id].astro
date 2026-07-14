@@ -1,0 +1,77 @@
+---
+import MainLayout from '@/layouts/MainLayout.astro';
+import { getCollection } from 'astro:content';
+import ImagePlaceholder from '@components/ImagePlaceholder.astro';
+import { getTranslations } from '@/i18n/utils';
+
+export async function getStaticPaths() {
+  const products = await getCollection('products');
+  return products.map(p => ({ params: { id: String(p.data.main.id) }, props: { product: p } }));
+}
+
+const { product } = Astro.props;
+const t = getTranslations('zh');
+const { data } = product;
+---
+
+<MainLayout lang="zh">
+  <section class="py-20">
+    <div class="mx-auto max-w-7xl px-4">
+      <div class="grid gap-12 lg:grid-cols-2">
+        <!-- Image -->
+        <div>
+          <ImagePlaceholder label={`[${data.title} — 主图]`} height="h-80" />
+          <div class="mt-4 grid grid-cols-3 gap-3">
+            <ImagePlaceholder label="[细节图 1]" height="h-24" />
+            <ImagePlaceholder label="[细节图 2]" height="h-24" />
+            <ImagePlaceholder label="[细节图 3]" height="h-24" />
+          </div>
+        </div>
+        <!-- Info -->
+        <div>
+          <h1 class="mb-4 text-3xl font-extrabold text-primary-900" style="font-family: var(--font-heading);">{data.title}</h1>
+          <p class="mb-6 text-gray-600 leading-relaxed">{data.main.content}</p>
+          <div class="rounded-lg bg-gray-100 p-6 mb-6">
+            <h3 class="mb-3 font-bold text-primary-800" style="font-family: var(--font-heading);">{t.products.detailSpecs}</h3>
+            <table class="w-full text-sm">
+              <tr class="border-b border-gray-200"><td class="py-2 text-gray-500">材质</td><td class="py-2 text-gray-800">{data.specs.material}</td></tr>
+              <tr class="border-b border-gray-200"><td class="py-2 text-gray-500">楞型</td><td class="py-2 text-gray-800">{data.specs.fluteType}</td></tr>
+              <tr class="border-b border-gray-200"><td class="py-2 text-gray-500">耐破强度</td><td class="py-2 text-gray-800">{data.specs.burstStrength}</td></tr>
+              <tr class="border-b border-gray-200"><td class="py-2 text-gray-500">边压强度</td><td class="py-2 text-gray-800">{data.specs.edgeCrush}</td></tr>
+              <tr class="border-b border-gray-200"><td class="py-2 text-gray-500">尺寸范围</td><td class="py-2 text-gray-800">{data.specs.sizeRange}</td></tr>
+              <tr><td class="py-2 text-gray-500">起订量</td><td class="py-2 text-gray-800">{data.specs.moq}</td></tr>
+            </table>
+          </div>
+          <a href="/zh/contact" class="inline-block rounded-lg bg-accent-600 px-8 py-3 font-semibold text-white transition hover:bg-accent-700">
+            {t.products.detailRequestQuote} →
+          </a>
+        </div>
+      </div>
+
+      <!-- Tabs: Specs | Applications | Custom Options -->
+      <div class="mt-16">
+        <div class="border-b border-gray-200 mb-8">
+          <nav class="flex gap-8">
+            <button class="border-b-2 border-accent-600 pb-3 text-sm font-semibold text-accent-600">{t.products.detailSpecs}</button>
+            <button class="border-b-2 border-transparent pb-3 text-sm text-gray-500 hover:text-gray-700">{t.products.detailApplications}</button>
+            <button class="border-b-2 border-transparent pb-3 text-sm text-gray-500 hover:text-gray-700">{t.products.detailCustomOptions}</button>
+          </nav>
+        </div>
+        <div class="grid gap-8 md:grid-cols-2">
+          <div>
+            <h3 class="text-lg font-bold text-primary-800 mb-4" style="font-family: var(--font-heading);">{t.products.detailApplications}</h3>
+            <ul class="space-y-2">
+              {data.applications.map(app => <li class="flex items-start gap-2 text-gray-600"><span class="text-accent-600 mt-1">•</span> {app}</li>)}
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-primary-800 mb-4" style="font-family: var(--font-heading);">{t.products.detailCustomOptions}</h3>
+            <ul class="space-y-2">
+              {data.customOptions.map(opt => <li class="flex items-start gap-2 text-gray-600"><span class="text-accent-600 mt-1">•</span> {opt}</li>)}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</MainLayout>

@@ -1,0 +1,24 @@
+---
+import MainLayout from '@/layouts/MainLayout.astro';
+import HeroSection from '@components/sections/home/HeroSection.astro';
+import WhyChooseUs from '@components/sections/home/WhyChooseUs.astro';
+import ProductShowcase from '@components/sections/home/ProductShowcase.astro';
+import FactorySnapshot from '@components/sections/home/FactorySnapshot.astro';
+import CTASection from '@components/sections/home/CTASection.astro';
+import TestimonialsCarousel from '@components/sections/home/TestimonialsCarousel.astro';
+import FAQ from '@components/sections/misc/FAQ.astro';
+import { getTranslations } from '@/i18n/utils';
+import allFaqs from '@data/faqs.json';
+
+const t = getTranslations('zh');
+---
+
+<MainLayout lang="zh">
+  <HeroSection t={t} />
+  <WhyChooseUs t={t} />
+  <ProductShowcase t={t} />
+  <FactorySnapshot t={t} />
+  <CTASection t={t} />
+  <TestimonialsCarousel t={t} />
+  <FAQ title={t.home.faqTitle} faqs={allFaqs} />
+</MainLayout>
