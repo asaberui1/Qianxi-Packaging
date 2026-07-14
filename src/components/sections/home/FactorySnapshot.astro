@@ -1,0 +1,33 @@
+---
+import ImagePlaceholder from '@components/ImagePlaceholder.astro';
+import type { SiteTranslations } from '@/i18n/types';
+const { t } = Astro.props;
+interface Props { t: SiteTranslations; }
+---
+
+<section class="py-20">
+  <div class="mx-auto max-w-7xl px-4">
+    <h2 class="mb-12 text-center text-3xl font-extrabold text-primary-900" style="font-family: var(--font-heading);">
+      {t.home.factorySnapshotTitle}
+    </h2>
+    <div class="grid gap-8 lg:grid-cols-3">
+      <div class="lg:col-span-2">
+        <div class="grid grid-cols-2 gap-4">
+          <ImagePlaceholder label="[Production Workshop]" height="h-40" />
+          <ImagePlaceholder label="[Warehouse]" height="h-40" />
+          <ImagePlaceholder label="[QC Laboratory]" height="h-40" />
+          <ImagePlaceholder label="[Finished Products]" height="h-40" />
+        </div>
+      </div>
+      <div class="rounded-xl bg-primary-900 p-8 text-white">
+        <h3 class="text-xl font-bold mb-3" style="font-family: var(--font-heading);">{t.home.followUs}</h3>
+        <p class="text-sm text-gray-300 mb-6">{t.home.followUsDesc}</p>
+        <div class="flex flex-wrap gap-3">
+          <a href="#" class="rounded-lg bg-white/10 px-4 py-2 text-sm hover:bg-white/20 transition">Instagram</a>
+          <a href="#" class="rounded-lg bg-white/10 px-4 py-2 text-sm hover:bg-white/20 transition">Facebook</a>
+          <a href="#" class="rounded-lg bg-white/10 px-4 py-2 text-sm hover:bg-white/20 transition">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

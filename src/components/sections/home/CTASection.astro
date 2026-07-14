@@ -1,0 +1,47 @@
+---
+import type { SiteTranslations } from '@/i18n/types';
+const { t } = Astro.props;
+interface Props { t: SiteTranslations; }
+---
+
+<section class="py-20">
+  <div class="mx-auto max-w-4xl rounded-2xl bg-primary-900 px-6 py-16 text-center text-white">
+    <h2 class="mb-4 text-3xl font-extrabold" style="font-family: var(--font-heading);">{t.home.ctaTitle}</h2>
+    <p class="mb-8 text-gray-300">{t.home.ctaSubtitle}</p>
+    <form id="homepage-cta-form" class="mx-auto flex max-w-xl flex-wrap justify-center gap-3">
+      <input type="email" name="email" required placeholder={t.home.ctaEmailPlaceholder}
+        class="flex-1 min-w-[200px] rounded-lg border-0 px-4 py-3 text-gray-900" />
+      <input type="text" name="name" placeholder={t.home.ctaNamePlaceholder}
+        class="flex-1 min-w-[150px] rounded-lg border-0 px-4 py-3 text-gray-900" />
+      <input type="text" name="requirements" placeholder={t.home.ctaRequirementsPlaceholder}
+        class="w-full rounded-lg border-0 px-4 py-3 text-gray-900" />
+      <button type="submit" class="rounded-lg bg-accent-600 px-8 py-3 font-semibold transition hover:bg-accent-700">
+        {t.home.ctaButton} →
+      </button>
+    </form>
+    <p class="mt-4 text-xs text-gray-400">Protected by reCAPTCHA. We respect your privacy.</p>
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById('homepage-cta-form') as HTMLFormElement;
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const apiUrl = (window as any).QIANXI_CONFIG?.apiUrl;
+    if (!apiUrl) {
+      form.reset();
+      form.innerHTML = '<div class="text-green-400 text-lg font-semibold">✓ Thank you! We will reply within 24 hours.</div>';
+      return;
+    }
+    try {
+      const formData = new FormData(form);
+      const res = await fetch(apiUrl, { method: 'POST', body: formData });
+      if (res.ok) {
+        form.reset();
+        form.innerHTML = '<div class="text-green-400 text-lg font-semibold">✓ Thank you! We will reply within 24 hours.</div>';
+      }
+    } catch {
+      form.innerHTML = '<div class="text-red-400">Something went wrong. Please email us directly.</div>';
+    }
+  });
+</script>

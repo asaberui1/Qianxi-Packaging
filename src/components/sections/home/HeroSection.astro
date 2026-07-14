@@ -1,0 +1,41 @@
+---
+import ImagePlaceholder from '@components/ImagePlaceholder.astro';
+import type { SiteTranslations } from '@/i18n/types';
+
+const { t } = Astro.props;
+interface Props { t: SiteTranslations; }
+---
+
+<section class="relative overflow-hidden rounded-3xl bg-primary-900 py-20 text-white md:py-32">
+  <div class="absolute inset-0 opacity-20">
+    <ImagePlaceholder label="[Factory hero image — modern corrugated production line, well-lit, clean industrial setting]" height="h-full" />
+  </div>
+  <div class="relative z-10 mx-auto max-w-3xl px-4 text-center">
+    <h1 class="mb-4 text-4xl font-extrabold leading-tight md:text-5xl" style="font-family: var(--font-heading);">
+      {t.home.heroTitle}
+    </h1>
+    <p class="mb-8 text-lg text-gray-300">{t.home.heroSubtitle}</p>
+    <a href="/contact" class="inline-block rounded-lg bg-accent-600 px-8 py-3 text-lg font-semibold text-white transition hover:bg-accent-700">
+      {t.home.heroCTA} →
+    </a>
+  </div>
+</section>
+
+<!-- Trust Cards -->
+<div class="-mt-10 relative z-10 mx-auto grid max-w-4xl gap-6 px-4 sm:grid-cols-3">
+  <div class="rounded-xl bg-white p-6 text-center shadow-lg">
+    <div class="mb-3 text-3xl">🏭</div>
+    <h3 class="text-lg font-bold text-primary-800" style="font-family: var(--font-heading);">{t.home.trustCard1Title}</h3>
+    <p class="mt-2 text-sm text-gray-600">{t.home.trustCard1Desc}</p>
+  </div>
+  <div class="rounded-xl bg-white p-6 text-center shadow-lg">
+    <div class="mb-3 text-3xl">⚙️</div>
+    <h3 class="text-lg font-bold text-primary-800" style="font-family: var(--font-heading);">{t.home.trustCard2Title}</h3>
+    <p class="mt-2 text-sm text-gray-600">{t.home.trustCard2Desc}</p>
+  </div>
+  <div class="rounded-xl bg-white p-6 text-center shadow-lg">
+    <div class="mb-3 text-3xl">🌍</div>
+    <h3 class="text-lg font-bold text-primary-800" style="font-family: var(--font-heading);">{t.home.trustCard3Title}</h3>
+    <p class="mt-2 text-sm text-gray-600">{t.home.trustCard3Desc}</p>
+  </div>
+</div>

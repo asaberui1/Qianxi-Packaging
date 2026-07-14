@@ -1,0 +1,35 @@
+---
+import type { SiteTranslations } from '@/i18n/types';
+const { t } = Astro.props;
+interface Props { t: SiteTranslations; }
+---
+
+<section class="py-20">
+  <div class="mx-auto max-w-7xl px-4">
+    <h2 class="mb-12 text-center text-3xl font-extrabold text-primary-900" style="font-family: var(--font-heading);">
+      {t.home.whyChooseTitle}
+    </h2>
+    <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+      <div class="rounded-xl bg-white p-8 text-center shadow-md transition hover:shadow-lg">
+        <div class="mb-4 text-4xl">🏭</div>
+        <h3 class="text-lg font-bold text-primary-800" style="font-family: var(--font-heading);">{t.home.whyChoose1Title}</h3>
+        <p class="mt-3 text-sm text-gray-600">{t.home.whyChoose1Desc}</p>
+      </div>
+      <div class="rounded-xl bg-white p-8 text-center shadow-md transition hover:shadow-lg">
+        <div class="mb-4 text-4xl">📋</div>
+        <h3 class="text-lg font-bold text-primary-800" style="font-family: var(--font-heading);">{t.home.whyChoose2Title}</h3>
+        <p class="mt-3 text-sm text-gray-600">{t.home.whyChoose2Desc}</p>
+      </div>
+      <div class="rounded-xl bg-white p-8 text-center shadow-md transition hover:shadow-lg">
+        <div class="mb-4 text-4xl">⚙️</div>
+        <h3 class="text-lg font-bold text-primary-800" style="font-family: var(--font-heading);">{t.home.whyChoose3Title}</h3>
+        <p class="mt-3 text-sm text-gray-600">{t.home.whyChoose3Desc}</p>
+      </div>
+      <div class="rounded-xl bg-white p-8 text-center shadow-md transition hover:shadow-lg">
+        <div class="mb-4 text-4xl">💬</div>
+        <h3 class="text-lg font-bold text-primary-800" style="font-family: var(--font-heading);">{t.home.whyChoose4Title}</h3>
+        <p class="mt-3 text-sm text-gray-600">{t.home.whyChoose4Desc}</p>
+      </div>
+    </div>
+  </div>
+</section>

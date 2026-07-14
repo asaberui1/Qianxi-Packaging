@@ -1,0 +1,25 @@
+---
+import testimonials from '@data/testimonials.json';
+import type { SiteTranslations } from '@/i18n/types';
+const { t } = Astro.props;
+interface Props { t: SiteTranslations; }
+---
+
+<section class="py-20 bg-gray-50">
+  <div class="mx-auto max-w-4xl px-4">
+    <h2 class="mb-12 text-center text-3xl font-extrabold text-primary-900" style="font-family: var(--font-heading);">
+      {t.home.testimonialsTitle}
+    </h2>
+    <div class="grid gap-6 md:grid-cols-3">
+      {testimonials.map(item => (
+        <div class="rounded-xl bg-white p-6 shadow-md">
+          <p class="text-sm text-gray-600 italic leading-relaxed">"{item.quote}"</p>
+          <div class="mt-4 border-t pt-4">
+            <p class="text-sm font-semibold text-primary-800">{item.author}</p>
+            <p class="text-xs text-gray-500">{item.company} <span>{item.country}</span></p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
