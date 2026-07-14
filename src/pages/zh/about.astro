@@ -3,7 +3,6 @@ import MainLayout from '@/layouts/MainLayout.astro';
 import CompanyIntro from '@components/sections/about/CompanyIntro.astro';
 import FactoryGallery from '@components/sections/about/FactoryGallery.astro';
 import Certifications from '@components/sections/about/Certifications.astro';
-import FactoryConfig from '@components/sections/about/FactoryConfig.astro';
 import { getTranslations } from '@/i18n/utils';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
@@ -11,10 +10,9 @@ const t = getTranslations('zh');
 ---
 
 <MainLayout lang="zh">
-  <CompanyIntro t={t} />
+  <CompanyIntro t={t} lang="zh" />
   <FactoryGallery t={t} />
   <Certifications t={t} />
-  <FactoryConfig t={t} lang="zh" />
   <section class="py-20">
     <div class="mx-auto max-w-4xl rounded-2xl bg-gray-100 px-6 py-12 text-center">
       <h2 class="mb-3 text-2xl font-extrabold text-primary-900" style="font-family: var(--font-heading);">
