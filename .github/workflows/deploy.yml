@@ -33,7 +33,7 @@ jobs:
           cache: pnpm
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --config.verify-deps-before-run=false
 
       - name: Build
         run: pnpm build
