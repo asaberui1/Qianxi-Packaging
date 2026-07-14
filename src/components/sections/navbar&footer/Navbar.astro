@@ -13,11 +13,12 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const prefix = lang === 'zh' ? '/zh' : '';
 const homeUrl = `${base}${prefix}/`;
 
+// NavLink prepends base internally, so pass relative paths only
 const navLinks = [
-  { name: t.nav.home, url: `${base}${prefix}/` },
-  { name: t.nav.products, url: `${base}${prefix}/products` },
-  { name: t.nav.about, url: `${base}${prefix}/about` },
-  { name: t.nav.contact, url: `${base}${prefix}/contact` },
+  { name: t.nav.home, url: `${prefix}/` },
+  { name: t.nav.products, url: `${prefix}/products` },
+  { name: t.nav.about, url: `${prefix}/about` },
+  { name: t.nav.contact, url: `${prefix}/contact` },
 ];
 
 const otherLangLabel = lang === 'zh' ? 'English' : '中文';
