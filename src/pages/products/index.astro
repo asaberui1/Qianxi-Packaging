@@ -1,144 +1,64 @@
 ---
-// Importing necessary components
 import MainLayout from '@/layouts/MainLayout.astro';
-import PrimaryCTA from '@components/ui/buttons/PrimaryCTA.astro';
-import CardSmall from '@components/ui/cards/CardSmall.astro';
-import CardWide from '@components/ui/cards/CardWide.astro';
-import FeaturesStatsAlt from '@components/sections/features/FeaturesStatsAlt.astro';
-import TestimonialsSectionAlt from '@components/sections/testimonials/TestimonialsSectionAlt.astro';
-
-// Importing necessary functions from Astro
 import { getCollection } from 'astro:content';
-import type { CollectionEntry } from 'astro:content';
-import { SITE } from '@data/constants';
+import ImagePlaceholder from '@components/ImagePlaceholder.astro';
+import { getTranslations } from '@/i18n/utils';
 
-// Fetching all the product related content and sorting it by main.id
-const product: CollectionEntry<'products'>[] = (
-  await getCollection('products', ({ id }) => {
-    return id.startsWith('en/');
-  })
-).sort(
-  (a: CollectionEntry<'products'>, b: CollectionEntry<'products'>) =>
-    a.data.main.id - b.data.main.id
-);
-
-// Define variables for page content
-const title: string = 'Products';
-const subTitle: string =
-  'Explore the durability and precision of ScrewFast tools, designed for both professionals and enthusiasts. Each of our products is crafted with precision and built to last, ensuring you have the right tool for every job.';
-
-// Testimonial data that will be rendered in the component
-const testimonials = [
-  // First testimonial data
-  {
-    content:
-      ' "Since switching to ScrewFast\'s hardware tools, the efficiency on our construction sites has skyrocketed. The durability of the hex bolts and precision of the machine screws are simply unmatched. It\'s refreshing to work with a company that truly understands the daily demands of the industry." ',
-    author: 'Jason Clark',
-    role: 'Site Foreman | TopBuild',
-    avatarSrc:
-      'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=facearea&facepad=2&w=320&h=320&q=80',
-    avatarAlt: 'Image Description',
-  },
-  // Second testimonial data
-  {
-    content:
-      ' "As an interior designer, I\'m always looking for high-quality materials and tools that help bring my visions to life. ScrewFast\'s mixed screws assortment has been a game-changer for my projects, providing the perfect blend of quality and variety. The outstanding customer support was just the cherry on top!" ',
-    author: 'Maria Gonzalez',
-    role: 'Interior Designer | Creative Spaces',
-    avatarSrc:
-      'https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1376&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D8&auto=format&fit=facearea&facepad=2&w=320&h=320&q=80',
-    avatarAlt: 'Image Description',
-  },
-  // Third testimonial data
-  {
-    content:
-      " \"I've been a professional carpenter for over 15 years, and I can sincerely say that ScrewFast's tap bolts and nuts are some of the best I've used. They grip like no other, and I have full confidence in every joint and fixture. Plus, the service is impeccable – they truly care about my project's success.\" ",
-    author: 'Richard Kim',
-    role: 'Master Carpenter | WoodWright',
-    avatarSrc:
-      'https://images.unsplash.com/photo-1474176857210-7287d38d27c6?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D8&auto=format&fit=facearea&facepad=2&w=320&h=320&q=80',
-    avatarAlt: 'Image Description',
-  },
-];
-
-const pageTitle: string = `Products | ${SITE.title}`;
-const metaDescription =
-  'Explore the durability and precision of ScrewFast tools, designed for both professionals and enthusiasts.';
-const ogTitle = 'Hardware Tools | ScrewFast';
+const t = getTranslations('en');
+const products = await getCollection('products');
 ---
 
-<MainLayout
-  title={pageTitle}
-  customDescription={metaDescription}
-  customOgTitle={ogTitle}
-  structuredData={{
-    '@context': 'https://schema.org',
-    '@type': 'WebPage',
-    '@id': 'https://screwfast.uk/products',
-    url: 'https://screwfast.uk/products',
-    name: 'Hardware Tools | ScrewFast',
-    description:
-      'Explore the durability and precision of ScrewFast tools, designed for both professionals and enthusiasts.',
-    isPartOf: {
-      '@type': 'WebSite',
-      url: 'https://screwfast.uk',
-      name: 'ScrewFast',
-      description:
-        'ScrewFast offers top-tier hardware tools and expert construction services to meet all your project needs.',
-    },
-    inLanguage: 'en-US',
-  }}
->
-  <div
-    class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 2xl:max-w-full"
-  >
-    <div class="mb-4 flex items-center justify-between gap-8 sm:mb-8 md:mb-12">
-      <div class="flex items-center gap-12">
-        <h1
-          class="text-2xl font-bold tracking-tight text-balance text-neutral-800 md:text-4xl md:leading-tight dark:text-neutral-200"
-        >
-          {title}
-        </h1>
-        {
-          subTitle && (
-            <p class="hidden max-w-(--breakpoint-sm) text-pretty text-neutral-600 md:block dark:text-neutral-400">
-              {subTitle}
-            </p>
-          )
-        }
+<MainLayout>
+  <section class="py-20">
+    <div class="mx-auto max-w-7xl px-4">
+      <h1 class="mb-12 text-center text-4xl font-extrabold text-primary-900" style="font-family: var(--font-heading);">
+        {t.products.listTitle}
+      </h1>
+      <div class="flex gap-8">
+        <!-- Sidebar -->
+        <aside class="hidden w-56 shrink-0 lg:block">
+          <div class="sticky top-24 space-y-6">
+            <div>
+              <h3 class="mb-3 text-sm font-bold text-primary-800" style="font-family: var(--font-heading);">{t.products.filterFluteType}</h3>
+              <div class="space-y-2">
+                <label class="flex items-center gap-2 text-sm text-gray-600"><input type="checkbox" class="rounded border-gray-300 text-accent-600 focus:ring-accent-500" /> {t.products.flute3layer}</label>
+                <label class="flex items-center gap-2 text-sm text-gray-600"><input type="checkbox" class="rounded border-gray-300 text-accent-600 focus:ring-accent-500" /> {t.products.flute5layer}</label>
+                <label class="flex items-center gap-2 text-sm text-gray-600"><input type="checkbox" class="rounded border-gray-300 text-accent-600 focus:ring-accent-500" /> {t.products.flute7layer}</label>
+                <label class="flex items-center gap-2 text-sm text-gray-600"><input type="checkbox" class="rounded border-gray-300 text-accent-600 focus:ring-accent-500" /> {t.products.fluteE}</label>
+              </div>
+            </div>
+            <div>
+              <h3 class="mb-3 text-sm font-bold text-primary-800" style="font-family: var(--font-heading);">{t.products.filterUsage}</h3>
+              <div class="space-y-2">
+                <label class="flex items-center gap-2 text-sm text-gray-600"><input type="checkbox" class="rounded border-gray-300 text-accent-600 focus:ring-accent-500" /> {t.products.usageMoving}</label>
+                <label class="flex items-center gap-2 text-sm text-gray-600"><input type="checkbox" class="rounded border-gray-300 text-accent-600 focus:ring-accent-500" /> {t.products.usageEcommerce}</label>
+                <label class="flex items-center gap-2 text-sm text-gray-600"><input type="checkbox" class="rounded border-gray-300 text-accent-600 focus:ring-accent-500" /> {t.products.usageIndustrial}</label>
+                <label class="flex items-center gap-2 text-sm text-gray-600"><input type="checkbox" class="rounded border-gray-300 text-accent-600 focus:ring-accent-500" /> {t.products.usageRetail}</label>
+              </div>
+            </div>
+          </div>
+        </aside>
+        <!-- Product Grid -->
+        <div class="flex-1">
+          <div class="grid gap-6 sm:grid-cols-2">
+            {products.map(product => (
+              <a href={`/products/${product.data.main.id}`} class="group overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm transition hover:shadow-md">
+                <ImagePlaceholder label={`[${product.data.title}]`} height="h-48" />
+                <div class="p-4">
+                  <h3 class="font-bold text-primary-800 group-hover:text-accent-600" style="font-family: var(--font-heading);">
+                    {product.data.title}
+                  </h3>
+                  <p class="mt-1 text-sm text-gray-600">{product.data.description}</p>
+                  <div class="mt-3 flex flex-wrap gap-2 text-xs">
+                    <span class="rounded-full bg-gray-100 px-2 py-1 text-gray-600">{product.data.specs.fluteType}</span>
+                    <span class="rounded-full bg-gray-100 px-2 py-1 text-gray-600">{product.data.specs.moq}</span>
+                  </div>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
       </div>
-      <PrimaryCTA title="Customer Stories" url="#testimonials" noArrow={true} />
     </div>
-    {
-      /* Displaying products in alternating styles. Alternative product gets different card styling.
-    Maps through all product entries and displays them with either CardSmall or CardWide based on their position. */
-    }
-    <section class="grid grid-cols-1 gap-4 sm:grid-cols-3 md:gap-6 xl:gap-8">
-      {
-        product.map((product, index) => {
-          const position = index % 4;
-          if (position === 0 || position === 3) {
-            return <CardSmall product={product} />;
-          } else {
-            return <CardWide product={product} />;
-          }
-        })
-      }
-    </section>
-  </div>
-  {/* Features statistics section */}
-  <FeaturesStatsAlt
-    title="Why Choose ScrewFast?"
-    subTitle="Transform your ideas into tangible results with ScrewFast tools. Whether you're starting with a sketch on a napkin or diving into a comprehensive construction project, our tools are engineered to help you build with confidence."
-    benefits={[
-      'Robust and reliable tools for long-lasting performance.',
-      'Innovative solutions tailored to modern construction needs.',
-      "Customer support dedicated to your project's success.",
-    ]}
-  />
-  {/* Testimonials section */}
-  <TestimonialsSectionAlt
-    title="What Our Customers Say"
-    testimonials={testimonials}
-  />
+  </section>
 </MainLayout>
