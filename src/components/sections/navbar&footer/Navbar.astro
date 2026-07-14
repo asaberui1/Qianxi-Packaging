@@ -1,10 +1,27 @@
 ---
 import NavLink from '@components/ui/links/NavLink.astro';
 import BrandLogo from '@components/BrandLogo.astro';
-import enStrings from '@utils/navigation.ts';
+import type { SiteTranslations } from '@/i18n/types';
+
+const { t, lang = 'en' } = Astro.props;
+interface Props {
+  t: SiteTranslations;
+  lang?: string;
+}
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
-const homeUrl = `${base}/`;
+const prefix = lang === 'zh' ? '/zh' : '';
+const homeUrl = `${base}${prefix}/`;
+
+const navLinks = [
+  { name: t.nav.home, url: `${base}${prefix}/` },
+  { name: t.nav.products, url: `${base}${prefix}/products` },
+  { name: t.nav.about, url: `${base}${prefix}/about` },
+  { name: t.nav.contact, url: `${base}${prefix}/contact` },
+];
+
+const otherLangLabel = lang === 'zh' ? 'English' : '中文';
+const otherLangUrl = lang === 'zh' ? `${base}/` : `${base}/zh/`;
 ---
 
 <header class="sticky inset-x-0 top-4 z-50 flex w-full flex-wrap text-sm md:flex-nowrap md:justify-start">
@@ -29,13 +46,13 @@ const homeUrl = `${base}/`;
     </div>
     <div id="navbar-collapse-with-animation" class="hs-collapse hidden grow basis-full overflow-hidden transition-all duration-300 md:block">
       <div class="mt-5 flex flex-col gap-x-0 gap-y-4 md:mt-0 md:flex-row md:items-center md:justify-end md:gap-x-4 md:gap-y-0 md:ps-7 lg:gap-x-7">
-        {enStrings.navBarLinks.map(link => (
+        {navLinks.map(link => (
           <NavLink url={link.url} name={link.name} />
         ))}
-        <a href={`${base}/contact`} class="rounded-lg bg-accent-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-accent-700">
-          Get a Quote
+        <a href={`${base}${prefix}/contact`} class="rounded-lg bg-accent-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-accent-700">
+          {t.nav.getQuote}
         </a>
-        <a href={`${base}/zh/`} class="text-sm text-gray-600 hover:text-primary-700 transition">中文</a>
+        <a href={otherLangUrl} class="text-sm text-gray-600 hover:text-primary-700 transition">{otherLangLabel}</a>
       </div>
     </div>
   </nav>

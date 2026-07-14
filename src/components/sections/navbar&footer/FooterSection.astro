@@ -1,10 +1,15 @@
 ---
 import FooterSocialLink from '@components/ui/links/FooterSocialLink.astro';
-import enStrings from '@utils/navigation.ts';
+import type { SiteTranslations } from '@/i18n/types';
 
-const { socialLinks } = enStrings;
+const { t, lang = 'en' } = Astro.props;
+interface Props {
+  t: SiteTranslations;
+  lang?: string;
+}
+
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
-const currentYear = new Date().getFullYear();
+const prefix = lang === 'zh' ? '/zh' : '';
 ---
 
 <footer class="bg-primary-900 text-white">
@@ -17,44 +22,44 @@ const currentYear = new Date().getFullYear();
           <span class="text-lg font-bold text-white" style="font-family: var(--font-heading);">Qianxi Packaging</span>
         </div>
         <p class="text-sm text-gray-300 leading-relaxed max-w-sm">
-          Your Trusted Corrugated Box Manufacturer — Factory Direct, Custom Solutions, Global Shipping.
+          {t.footer.brandTagline}
         </p>
         <div class="flex gap-3 mt-6">
-          <FooterSocialLink url={socialLinks.facebook} icon="facebookFooter" />
-          <FooterSocialLink url={socialLinks.x} icon="xFooter" />
-          <FooterSocialLink url={socialLinks.instagram} icon="instagram" />
-          <FooterSocialLink url={socialLinks.linkedin} icon="linkedIn" />
+          <FooterSocialLink url="https://www.facebook.com/" icon="facebookFooter" />
+          <FooterSocialLink url="https://twitter.com/" icon="xFooter" />
+          <FooterSocialLink url="https://www.instagram.com/" icon="instagram" />
+          <FooterSocialLink url="https://www.linkedin.com/" icon="linkedIn" />
         </div>
       </div>
 
       <!-- Quick Links -->
       <div>
-        <h4 class="mb-4 text-sm font-semibold uppercase tracking-wider text-accent-400" style="font-family: var(--font-heading);">Quick Links</h4>
+        <h4 class="mb-4 text-sm font-semibold uppercase tracking-wider text-accent-400" style="font-family: var(--font-heading);">{t.footer.quickLinks}</h4>
         <ul class="space-y-2">
-          <li><a href={`${base}/`} class="text-sm text-gray-300 hover:text-white transition">Home</a></li>
-          <li><a href={`${base}/about`} class="text-sm text-gray-300 hover:text-white transition">About Us</a></li>
-          <li><a href={`${base}/products`} class="text-sm text-gray-300 hover:text-white transition">Products</a></li>
-          <li><a href={`${base}/contact`} class="text-sm text-gray-300 hover:text-white transition">Contact</a></li>
+          <li><a href={`${base}${prefix}/`} class="text-sm text-gray-300 hover:text-white transition">{t.nav.home}</a></li>
+          <li><a href={`${base}${prefix}/about`} class="text-sm text-gray-300 hover:text-white transition">{t.nav.about}</a></li>
+          <li><a href={`${base}${prefix}/products`} class="text-sm text-gray-300 hover:text-white transition">{t.nav.products}</a></li>
+          <li><a href={`${base}${prefix}/contact`} class="text-sm text-gray-300 hover:text-white transition">{t.nav.contact}</a></li>
         </ul>
       </div>
 
       <!-- Products -->
       <div>
-        <h4 class="mb-4 text-sm font-semibold uppercase tracking-wider text-accent-400" style="font-family: var(--font-heading);">Products</h4>
+        <h4 class="mb-4 text-sm font-semibold uppercase tracking-wider text-accent-400" style="font-family: var(--font-heading);">{t.footer.productLinks}</h4>
         <ul class="space-y-2">
-          {enStrings.megaMenuLinks.byFluteType.map(link => (
-            <li><a href={link.url} class="text-sm text-gray-300 hover:text-white transition">{link.name}</a></li>
-          ))}
+          <li><a href={`${base}${prefix}/products`} class="text-sm text-gray-300 hover:text-white transition">{t.products.flute3layer}</a></li>
+          <li><a href={`${base}${prefix}/products`} class="text-sm text-gray-300 hover:text-white transition">{t.products.flute5layer}</a></li>
+          <li><a href={`${base}${prefix}/products`} class="text-sm text-gray-300 hover:text-white transition">{t.products.flute7layer}</a></li>
+          <li><a href={`${base}${prefix}/products`} class="text-sm text-gray-300 hover:text-white transition">{t.products.fluteE}</a></li>
         </ul>
       </div>
 
       <!-- Support -->
       <div>
-        <h4 class="mb-4 text-sm font-semibold uppercase tracking-wider text-accent-400" style="font-family: var(--font-heading);">Support</h4>
+        <h4 class="mb-4 text-sm font-semibold uppercase tracking-wider text-accent-400" style="font-family: var(--font-heading);">{t.footer.support}</h4>
         <ul class="space-y-2">
-          {enStrings.footerLinks[2].links.map(link => (
-            <li><a href={link.url} class="text-sm text-gray-300 hover:text-white transition">{link.name}</a></li>
-          ))}
+          <li><a href={`${base}${prefix}/#faq`} class="text-sm text-gray-300 hover:text-white transition">FAQ</a></li>
+          <li><a href={`${base}${prefix}/contact`} class="text-sm text-gray-300 hover:text-white transition">{t.nav.contact}</a></li>
         </ul>
       </div>
     </div>
@@ -62,11 +67,11 @@ const currentYear = new Date().getFullYear();
     <!-- Bottom Bar -->
     <div class="mt-12 border-t border-primary-700 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
       <p class="text-xs text-gray-400">
-        &copy; {currentYear} Chengdu Qianxi Packaging Materials Co., Ltd. All rights reserved.
+        {t.footer.copyright}
       </p>
       <div class="flex gap-6">
-        <a href="#" class="text-xs text-gray-400 hover:text-white transition">Privacy Policy</a>
-        <a href="#" class="text-xs text-gray-400 hover:text-white transition">Terms</a>
+        <a href="#" class="text-xs text-gray-400 hover:text-white transition">{t.footer.privacyPolicy}</a>
+        <a href="#" class="text-xs text-gray-400 hover:text-white transition">{t.footer.terms}</a>
       </div>
     </div>
   </div>

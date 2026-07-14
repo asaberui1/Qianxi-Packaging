@@ -4,6 +4,8 @@ import Meta from '@components/Meta.astro';
 import Navbar from '@components/sections/navbar&footer/Navbar.astro';
 import FooterSection from '@components/sections/navbar&footer/FooterSection.astro';
 import { SITE } from '@data/constants';
+import { getTranslations } from '@/i18n/utils';
+import type { Locale } from '@/i18n/utils';
 import '@styles/global.css';
 
 // Setting expected props
@@ -15,6 +17,9 @@ const {
   customDescription = null,
   customOgTitle = null,
 } = Astro.props;
+
+const locale: Locale = (lang === 'zh' ? 'zh' : 'en');
+const t = getTranslations(locale);
 
 // Interface to type-check the properties
 interface Props {
@@ -61,12 +66,12 @@ interface Props {
     <div
       class="mx-auto w-full max-w-(--breakpoint-2xl) grow px-4 sm:px-6 lg:px-8"
     >
-      <Navbar />
+      <Navbar t={t} lang={lang} />
       <main>
         <slot />
       </main>
     </div>
-    <FooterSection />
+    <FooterSection t={t} lang={lang} />
     <script>
       // https://preline.co
       import 'preline';
