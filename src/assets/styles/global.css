@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Roboto:wght@400;500;700&display=swap');
+
 @import 'tailwindcss';
 
 /* Preline UI */
@@ -11,72 +13,76 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  /* https://tailwindcss.com/docs/colors#customizing-your-colors */
   --color-*: initial;
   --color-transparent: transparent;
   --color-current: currentColor;
   --color-black: #000;
   --color-white: #fff;
 
-  --color-gray-50: oklch(0.985 0.002 247.839);
-  --color-gray-100: oklch(0.967 0.003 264.542);
-  --color-gray-200: oklch(0.928 0.006 264.531);
-  --color-gray-300: oklch(0.872 0.01 258.338);
-  --color-gray-400: oklch(0.707 0.022 261.325);
-  --color-gray-500: oklch(0.551 0.027 264.364);
-  --color-gray-600: oklch(0.446 0.03 256.802);
-  --color-gray-700: oklch(0.373 0.034 259.733);
-  --color-gray-800: oklch(0.278 0.033 256.848);
-  --color-gray-900: oklch(0.21 0.034 264.665);
-  --color-gray-950: oklch(0.13 0.028 261.692);
+  /* Gray scale — neutral slate */
+  --color-gray-50: #f8fafc;
+  --color-gray-100: #f1f5f9;
+  --color-gray-200: #e2e8f0;
+  --color-gray-300: #cbd5e1;
+  --color-gray-400: #94a3b8;
+  --color-gray-500: #64748b;
+  --color-gray-600: #475569;
+  --color-gray-700: #334155;
+  --color-gray-800: #1e293b;
+  --color-gray-900: #0f172a;
+  --color-gray-950: #020617;
 
-  --color-indigo-50: oklch(0.962 0.018 272.314);
-  --color-indigo-100: oklch(0.93 0.034 272.788);
-  --color-indigo-200: oklch(0.87 0.065 274.039);
-  --color-indigo-300: oklch(0.785 0.115 274.713);
-  --color-indigo-400: oklch(0.673 0.182 276.935);
-  --color-indigo-500: oklch(0.585 0.233 277.117);
-  --color-indigo-600: oklch(0.511 0.262 276.966);
-  --color-indigo-700: oklch(0.457 0.24 277.023);
-  --color-indigo-800: oklch(0.398 0.195 277.366);
-  --color-indigo-900: oklch(0.359 0.144 278.697);
-  --color-indigo-950: oklch(0.257 0.09 281.288);
+  /* Primary — Steel Blue */
+  --color-primary-50: #eff4fb;
+  --color-primary-100: #dbe5f5;
+  --color-primary-200: #bdd0ed;
+  --color-primary-300: #8fb2e0;
+  --color-primary-400: #5b8ecf;
+  --color-primary-500: #3b71ba;
+  --color-primary-600: #2b589e;
+  --color-primary-700: #244780;
+  --color-primary-800: #1e3a5f;
+  --color-primary-900: #1a2f4e;
+  --color-primary-950: #0f1f36;
 
-  --color-neutral-50: oklch(0.985 0 0);
-  --color-neutral-100: oklch(0.97 0 0);
-  --color-neutral-200: oklch(0.922 0 0);
-  --color-neutral-300: oklch(0.87 0 0);
-  --color-neutral-400: oklch(0.708 0 0);
-  --color-neutral-500: oklch(0.556 0 0);
-  --color-neutral-600: oklch(0.439 0 0);
-  --color-neutral-700: oklch(0.371 0 0);
-  --color-neutral-800: oklch(0.269 0 0);
-  --color-neutral-900: oklch(0.205 0 0);
-  --color-neutral-950: oklch(0.145 0 0);
+  /* Accent — Burnt Orange */
+  --color-accent-50: #fff8ed;
+  --color-accent-100: #ffefd4;
+  --color-accent-200: #ffdba8;
+  --color-accent-300: #ffc170;
+  --color-accent-400: #ff9c36;
+  --color-accent-500: #fe7f11;
+  --color-accent-600: #ea580c;
+  --color-accent-700: #c24808;
+  --color-accent-800: #9a3a0f;
+  --color-accent-900: #7c3210;
+  --color-accent-950: #431606;
 
-  --color-yellow-50: oklch(0.987 0.026 102.212);
-  --color-yellow-100: oklch(0.973 0.071 103.193);
-  --color-yellow-200: oklch(0.945 0.129 101.54);
-  --color-yellow-300: oklch(0.905 0.182 98.111);
-  --color-yellow-400: oklch(0.852 0.199 91.936);
-  --color-yellow-500: oklch(0.795 0.184 86.047);
-  --color-yellow-600: oklch(0.681 0.162 75.834);
-  --color-yellow-700: oklch(0.554 0.135 66.442);
-  --color-yellow-800: oklch(0.476 0.114 61.907);
-  --color-yellow-900: oklch(0.421 0.095 57.708);
-  --color-yellow-950: oklch(0.286 0.066 53.813);
+  /* Neutral — for light background scheme */
+  --color-neutral-50: #f8fafc;
+  --color-neutral-100: #f1f5f9;
+  --color-neutral-200: #e2e8f0;
+  --color-neutral-300: #cbd5e1;
+  --color-neutral-400: #94a3b8;
+  --color-neutral-500: #64748b;
+  --color-neutral-600: #475569;
+  --color-neutral-700: #334155;
+  --color-neutral-800: #1e293b;
+  --color-neutral-900: #0f172a;
+  --color-neutral-950: #020617;
 
-  --color-orange-50: oklch(0.98 0.016 73.684);
-  --color-orange-100: oklch(0.954 0.038 75.164);
-  --color-orange-200: oklch(0.901 0.076 70.697);
-  --color-orange-300: oklch(70.72% 0.182 40.56);
-  --color-orange-400: oklch(67.4% 0.2072 39.23);
-  --color-orange-500: oklch(61.86% 0.1946 38.88);
-  --color-orange-600: oklch(0.646 0.222 41.116);
-  --color-orange-700: oklch(0.553 0.195 38.402);
-  --color-orange-800: oklch(0.47 0.157 37.304);
-  --color-orange-900: oklch(0.408 0.123 38.172);
-  --color-orange-950: oklch(0.266 0.079 36.259);
+  /* Keep orange for Preline compatibility */
+  --color-orange-50: #fff8ed;
+  --color-orange-100: #ffefd4;
+  --color-orange-200: #ffdba8;
+  --color-orange-300: #ffc170;
+  --color-orange-400: #ff9c36;
+  --color-orange-500: #fe7f11;
+  --color-orange-600: #ea580c;
+  --color-orange-700: #c24808;
+  --color-orange-800: #9a3a0f;
+  --color-orange-900: #7c3210;
+  --color-orange-950: #431606;
 
   --color-red-50: oklch(0.971 0.013 17.38);
   --color-red-100: oklch(0.936 0.032 17.717);
@@ -89,6 +95,23 @@
   --color-red-800: oklch(0.444 0.177 26.899);
   --color-red-900: oklch(0.396 0.141 25.723);
   --color-red-950: oklch(0.258 0.092 26.042);
+
+  /* Font families */
+  --font-sans: 'Roboto', ui-sans-serif, system-ui, sans-serif;
+  --font-heading: 'Montserrat', 'Roboto', ui-sans-serif, system-ui, sans-serif;
+
+  /* Yellow kept minimal for any residual template uses */
+  --color-yellow-50: oklch(0.987 0.026 102.212);
+  --color-yellow-100: oklch(0.973 0.071 103.193);
+  --color-yellow-200: oklch(0.945 0.129 101.54);
+  --color-yellow-300: oklch(0.905 0.182 98.111);
+  --color-yellow-400: oklch(0.852 0.199 91.936);
+  --color-yellow-500: oklch(0.795 0.184 86.047);
+  --color-yellow-600: oklch(0.681 0.162 75.834);
+  --color-yellow-700: oklch(0.554 0.135 66.442);
+  --color-yellow-800: oklch(0.476 0.114 61.907);
+  --color-yellow-900: oklch(0.421 0.095 57.708);
+  --color-yellow-950: oklch(0.286 0.066 53.813);
 
   --color-zinc-50: oklch(0.985 0 0);
   --color-zinc-100: oklch(0.967 0.001 286.375);
@@ -118,6 +141,10 @@
   ::backdrop,
   ::file-selector-button {
     border-color: var(--color-gray-200, currentColor);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
   }
 
   button:not(:disabled),
