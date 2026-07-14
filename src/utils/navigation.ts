@@ -1,42 +1,65 @@
-// An array of links for navigation bar
 const navBarLinks = [
   { name: 'Home', url: '/' },
   { name: 'Products', url: '/products' },
-  { name: 'Services', url: '/services' },
-  { name: 'Blog', url: '/blog' },
+  { name: 'About Us', url: '/about' },
   { name: 'Contact', url: '/contact' },
 ];
-// An array of links for footer
+
+const megaMenuLinks = {
+  byFluteType: [
+    { name: '3-Layer Corrugated Boxes', url: '/products' },
+    { name: '5-Layer Corrugated Boxes', url: '/products' },
+    { name: '7-Layer Heavy-Duty Boxes', url: '/products' },
+    { name: 'E-Flute Cosmetic Boxes', url: '/products' },
+  ],
+  byUsage: [
+    { name: 'Moving / Relocation Boxes', url: '/products' },
+    { name: 'E-commerce Shipping Boxes', url: '/products' },
+    { name: 'Industrial / Heavy Parts', url: '/products' },
+    { name: 'Retail / Custom Printed', url: '/products' },
+  ],
+};
+
 const footerLinks = [
   {
-    section: 'Ecosystem',
+    section: 'Quick Links',
     links: [
-      { name: 'Documentation', url: '/welcome-to-docs/' },
-      { name: 'Tools & Equipment', url: '/products' },
-      { name: 'Construction Services', url: '/services' },
+      { name: 'Home', url: '/' },
+      { name: 'About Us', url: '/about' },
+      { name: 'Products', url: '/products' },
+      { name: 'Contact', url: '/contact' },
     ],
   },
   {
-    section: 'Company',
+    section: 'Products',
     links: [
-      { name: 'About us', url: '#' },
-      { name: 'Blog', url: '/blog' },
-      { name: 'Careers', url: '#' },
-      { name: 'Customers', url: '#' },
+      { name: '3-Layer Boxes', url: '/products' },
+      { name: '5-Layer Boxes', url: '/products' },
+      { name: 'Heavy-Duty Boxes', url: '/products' },
+      { name: 'Custom Printed Boxes', url: '/products' },
+    ],
+  },
+  {
+    section: 'Support',
+    links: [
+      { name: 'FAQ', url: '/#faq' },
+      { name: 'Shipping Info', url: '#' },
+      { name: 'Custom Order', url: '/contact' },
+      { name: 'Samples', url: '/contact' },
     ],
   },
 ];
-// An object of links for social icons
+
 const socialLinks = {
   facebook: 'https://www.facebook.com/',
   x: 'https://twitter.com/',
-  github: 'https://github.com/mearashadowfax/ScrewFast',
-  google: 'https://www.google.com/',
-  slack: 'https://slack.com/',
+  instagram: 'https://www.instagram.com/',
+  linkedin: 'https://www.linkedin.com/',
 };
 
 export default {
   navBarLinks,
+  megaMenuLinks,
   footerLinks,
   socialLinks,
 };
