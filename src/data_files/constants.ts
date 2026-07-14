@@ -16,14 +16,18 @@ export const COMPANY = {
   nameZh: '成都芊西包装材料有限公司',
   address: {
     en: 'Building 22, No. 301 Lianhua Road, Baiguo Street, Jintang County, Chengdu, Sichuan, China',
-    zh: '四川省成都市金堂县白果街道莲花路301号22栋1层（四川金堂经济开发区内）',
+    zh: '四川省成都市金堂县白果街道莲花路301号淮州智造新谷22栋1层',
   },
   email: 'sales@qianxipackaging.com',
   phone: '+86 XXX XXXX XXXX',
   whatsapp: '+86 XXX XXXX XXXX',
   coordinates: {
-    lat: 30.86,
-    lng: 104.41,
+    lat: 30.6822917,
+    lng: 104.5567195,
+    dms: {
+      lat: "30°40'56.2501\"N",
+      lng: "104°33'24.1903\"E",
+    },
   },
 };
 
@@ -38,10 +42,11 @@ export const SEO = {
     description: SITE.description,
     address: {
       '@type': 'PostalAddress',
-      streetAddress: 'Building 22, No. 301 Lianhua Road, Baiguo Street',
-      addressLocality: 'Chengdu',
+      streetAddress: 'Building 22, No. 301 Lianhua Road, Baiguo Street, Huaizhou Zhizao Xingu',
+      addressLocality: 'Jintang County, Chengdu',
       addressRegion: 'Sichuan',
       addressCountry: 'CN',
+      postalCode: '610400',
     },
     contactPoint: {
       '@type': 'ContactPoint',

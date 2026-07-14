@@ -1,16 +1,31 @@
 ---
-const { lat = 30.86, lng = 104.41 } = Astro.props;
+import { COMPANY } from '@/data_files/constants';
+
+const { lat = COMPANY.coordinates.lat, lng = COMPANY.coordinates.lng } = Astro.props;
 interface Props { lat?: number; lng?: number; }
+
+const embedUrl = `https://www.google.com/maps?q=${lat},${lng}&z=16&output=embed`;
 ---
 
 <section class="py-20 bg-gray-50">
   <div class="mx-auto max-w-7xl px-4">
-    <div class="overflow-hidden rounded-xl border-2 border-dashed border-gray-300 bg-gray-100 flex items-center justify-center" style="height: 400px;">
-      <p class="text-center text-gray-400">
-        <span class="block text-lg mb-2">📍 Google Maps</span>
-        <span class="text-sm">Chengdu Qianxi Packaging Materials Co., Ltd.<br/>Jintang County, Chengdu, Sichuan, China</span>
-        <span class="block mt-3 text-xs text-gray-300">(Map embed requires Google Maps API key — configure in window.QIANXI_CONFIG.googleMapsApiKey)</span>
-      </p>
+    <div class="overflow-hidden rounded-xl shadow-lg">
+      <iframe
+        src={embedUrl}
+        width="100%"
+        height="400"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Qianxi Packaging Factory Location"
+      ></iframe>
     </div>
+    <p class="mt-4 text-center text-sm text-gray-500">
+      {COMPANY.address.en}<br />
+      <span class="text-xs text-gray-400">
+        {COMPANY.coordinates.dms.lat}, {COMPANY.coordinates.dms.lng}
+      </span>
+    </p>
   </div>
 </section>
