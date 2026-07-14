@@ -45,12 +45,12 @@ const socialImage = Astro.url.origin + socialImageRes.src; // Get the full URL o
 
 const languages: { [key: string]: string } = {
   en: '',
-  fr: 'fr',
+  zh: 'zh',
 };
 
 function createHref(lang: string, prefix: string, path: string): string {
   // Remove any existing language prefix
-  const cleanPath = path.replace(/^\/(fr|en)\//, '/');
+  const cleanPath = path.replace(/^\/(zh|en)\//, '/');
 
   // Add the correct language prefix if needed
   const basePath = prefix ? `/${prefix}${cleanPath}` : cleanPath;
@@ -95,7 +95,7 @@ const appleTouchIcon = await getImage({
 <link rel="canonical" href={canonical} />
 {
   Object.entries(languages).map(([lang, prefix]) => {
-    const cleanPath = fullPath.replace(/^\/(fr|en)\//, '/');
+    const cleanPath = fullPath.replace(/^\/(zh|en)\//, '/');
     const href = createHref(lang, prefix, cleanPath);
     return <link rel="alternate" hreflang={lang} href={href} />;
   })
@@ -104,7 +104,7 @@ const appleTouchIcon = await getImage({
 {/* Facebook Meta Tags */}
 <meta
   property="og:locale"
-  content={basePath.startsWith('/fr') ? 'fr_FR' : 'en_US'}
+  content={basePath.startsWith('/zh') ? 'zh_CN' : 'en_US'}
 />
 <meta property="og:url" content={siteURL} />
 <meta property="og:type" content="website" />
@@ -136,4 +136,4 @@ const appleTouchIcon = await getImage({
 <link href={appleTouchIcon.src} rel="apple-touch-icon" />
 <link href={appleTouchIcon.src} rel="shortcut icon" />
 {/* Set theme color */}
-<meta name="theme-color" content="#facc15" />
+<meta name="theme-color" content="#1e3a5f" />

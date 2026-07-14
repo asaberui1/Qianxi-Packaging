@@ -1,0 +1,20 @@
+---
+const {
+  label,
+  width = 'w-full',
+  height = 'h-48',
+  class: extraClass = '',
+} = Astro.props;
+
+interface Props {
+  label: string;
+  width?: string;
+  height?: string;
+  class?: string;
+}
+---
+<div
+  class={`${width} ${height} ${extraClass} flex items-center justify-center rounded-lg border-2 border-dashed border-gray-300 bg-gray-100`}
+>
+  <p class="px-4 text-center text-sm text-gray-400">{label}</p>
+</div>
