@@ -4,9 +4,13 @@ import ImagePlaceholder from '@components/ImagePlaceholder.astro';
 import type { SiteTranslations } from '@/i18n/types';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
-const { t } = Astro.props;
-const products = await getCollection('products');
-interface Props { t: SiteTranslations; }
+const { t, lang = 'en' } = Astro.props;
+interface Props { t: SiteTranslations; lang?: string; }
+
+const allProducts = await getCollection('products');
+const locale = lang === 'zh' ? 'zh' : 'en';
+const pathPrefix = lang === 'zh' ? '/zh' : '';
+const products = allProducts.filter(p => p.id.startsWith(`${locale}/`));
 ---
 
 <section class="py-20 bg-gray-50">
@@ -16,7 +20,7 @@ interface Props { t: SiteTranslations; }
     </h2>
     <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
       {products.slice(0, 4).map(product => (
-        <a href={`${base}/products/${product.data.main.id}`} class="group block overflow-hidden rounded-xl bg-white shadow-md transition hover:shadow-lg">
+        <a href={`${base}${pathPrefix}/products/${product.data.main.id}`} class="group block overflow-hidden rounded-xl bg-white shadow-md transition hover:shadow-lg">
           <ImagePlaceholder label={`[${product.data.title} Image]`} height="h-48" />
           <div class="p-4">
             <h3 class="font-bold text-primary-800 group-hover:text-accent-600" style="font-family: var(--font-heading);">{product.data.title}</h3>

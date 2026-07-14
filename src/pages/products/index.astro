@@ -6,7 +6,8 @@ import { getTranslations } from '@/i18n/utils';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const t = getTranslations('en');
-const products = await getCollection('products');
+const allProducts = await getCollection('products');
+const products = allProducts.filter(p => p.id.startsWith('en/'));
 ---
 
 <MainLayout>
