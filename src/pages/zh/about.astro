@@ -5,6 +5,7 @@ import FactoryGallery from '@components/sections/about/FactoryGallery.astro';
 import Certifications from '@components/sections/about/Certifications.astro';
 import { getTranslations } from '@/i18n/utils';
 
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const t = getTranslations('zh');
 ---
 
@@ -18,7 +19,7 @@ const t = getTranslations('zh');
         {t.about.closingCTA}
       </h2>
       <p class="mb-6 text-gray-600">{t.about.closingCTASubtitle}</p>
-      <a href="/zh/contact" class="inline-block rounded-lg bg-accent-600 px-8 py-3 font-semibold text-white transition hover:bg-accent-700">
+      <a href={`${base}/zh/contact`} class="inline-block rounded-lg bg-accent-600 px-8 py-3 font-semibold text-white transition hover:bg-accent-700">
         {t.about.closingCTABtn} →
       </a>
     </div>

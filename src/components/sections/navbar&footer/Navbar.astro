@@ -3,7 +3,8 @@ import NavLink from '@components/ui/links/NavLink.astro';
 import BrandLogo from '@components/BrandLogo.astro';
 import enStrings from '@utils/navigation.ts';
 
-const homeUrl = '/';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const homeUrl = `${base}/`;
 ---
 
 <header class="sticky inset-x-0 top-4 z-50 flex w-full flex-wrap text-sm md:flex-nowrap md:justify-start">
@@ -31,10 +32,10 @@ const homeUrl = '/';
         {enStrings.navBarLinks.map(link => (
           <NavLink url={link.url} name={link.name} />
         ))}
-        <a href="/contact" class="rounded-lg bg-accent-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-accent-700">
+        <a href={`${base}/contact`} class="rounded-lg bg-accent-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-accent-700">
           Get a Quote
         </a>
-        <a href="/zh/" class="text-sm text-gray-600 hover:text-primary-700 transition">中文</a>
+        <a href={`${base}/zh/`} class="text-sm text-gray-600 hover:text-primary-700 transition">中文</a>
       </div>
     </div>
   </nav>

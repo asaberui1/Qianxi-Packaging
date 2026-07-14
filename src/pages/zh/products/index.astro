@@ -4,6 +4,7 @@ import { getCollection } from 'astro:content';
 import ImagePlaceholder from '@components/ImagePlaceholder.astro';
 import { getTranslations } from '@/i18n/utils';
 
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const t = getTranslations('zh');
 const products = await getCollection('products');
 ---
@@ -42,7 +43,7 @@ const products = await getCollection('products');
         <div class="flex-1">
           <div class="grid gap-6 sm:grid-cols-2">
             {products.map(product => (
-              <a href={`/zh/products/${product.data.main.id}`} class="group overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm transition hover:shadow-md">
+              <a href={`${base}/zh/products/${product.data.main.id}`} class="group overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm transition hover:shadow-md">
                 <ImagePlaceholder label={`[${product.data.title}]`} height="h-48" />
                 <div class="p-4">
                   <h3 class="font-bold text-primary-800 group-hover:text-accent-600" style="font-family: var(--font-heading);">

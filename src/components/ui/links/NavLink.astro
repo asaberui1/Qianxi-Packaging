@@ -1,5 +1,6 @@
 ---
 // Destructure the properties from Astro.props
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const { url, name } = Astro.props;
 
 // Define TypeScript interface for the properties
@@ -19,7 +20,7 @@ If URL is '/' (home page), assign ID as 'home'
 }
 <a
   id={url === '/' ? 'home' : url.replace('/', '')}
-  href={url}
+  href={`${base}${url}`}
   data-astro-prefetch
   class="rounded-lg text-base font-medium text-neutral-600 ring-zinc-500 outline-hidden hover:text-neutral-500 focus-visible:ring-3 md:py-3 md:text-sm 2xl:text-base dark:text-neutral-400 dark:ring-zinc-200 dark:hover:text-neutral-500 dark:focus:outline-hidden"
 >
@@ -28,14 +29,15 @@ If URL is '/' (home page), assign ID as 'home'
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
+    const base = import.meta.env.BASE_URL;
     let url = window.location.pathname;
-    let navId;
 
-    if (url === '/') {
-      navId = 'home';
-    } else {
-      navId = url.replace('/', '');
+    // Strip the base path to get the relative URL
+    if (url.startsWith(base)) {
+      url = '/' + url.slice(base.length);
     }
+
+    let navId = url === '/' ? 'home' : url.replace('/', '');
 
     let nav = document.getElementById(navId);
 
