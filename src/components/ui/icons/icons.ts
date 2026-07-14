@@ -504,6 +504,66 @@ export const Icons = {
     strokeLinejoin: 'round',
     stroke: 'currentColor',
   },
+  factory: {
+    paths: [
+      {
+        d: 'M2.25 21h19.5m-18-18v18m10.871-14.129a2.25 2.25 0 1 1 3.258 3.102L12 16.5l-5.879-5.527a2.25 2.25 0 0 1 3.258-3.102L12 10.5l2.621-2.629Z',
+      },
+    ],
+    class: 'mt-1 h-8 w-8 shrink-0 fill-accent-600',
+    width: 24,
+    height: 24,
+    viewBox: '0 0 24 24',
+    fill: 'currentColor',
+  },
+  sample: {
+    paths: [
+      {
+        d: 'M9 12h6m-3-3v6m-6 4.5V5.25A2.25 2.25 0 0 1 8.25 3h7.5A2.25 2.25 0 0 1 18 5.25v15.75a2.25 2.25 0 0 1-2.25 2.25H8.25A2.25 2.25 0 0 1 6 21Z',
+      },
+    ],
+    class: 'mt-1 h-8 w-8 shrink-0 fill-accent-600',
+    width: 24,
+    height: 24,
+    viewBox: '0 0 24 24',
+    fill: 'none',
+    strokeWidth: '1.5',
+    strokeLinecap: 'round',
+    strokeLinejoin: 'round',
+    stroke: 'currentColor',
+  },
+  equipment: {
+    paths: [
+      {
+        d: 'M4.5 12a7.5 7.5 0 0 0 15 0m-15 0H3m16.5 0H21m-9-9v1.5M12 3a9 9 0 0 1 9 9m-9-9a9 9 0 0 0-9 9m9-9v18m0 0a9 9 0 0 0 9-9m-9 9a9 9 0 0 1-9-9',
+      },
+    ],
+    class: 'mt-1 h-8 w-8 shrink-0 fill-accent-600',
+    width: 24,
+    height: 24,
+    viewBox: '0 0 24 24',
+    fill: 'none',
+    strokeWidth: '1.5',
+    strokeLinecap: 'round',
+    strokeLinejoin: 'round',
+    stroke: 'currentColor',
+  },
+  support24: {
+    paths: [
+      {
+        d: 'M12 20.25c4.97 0 9-3.694 9-8.25s-4.03-8.25-9-8.25S3 7.444 3 12c0 2.104.859 4.023 2.273 5.48.432.447.74 1.04.586 1.641a4.483 4.483 0 0 1-.923 1.785A5.969 5.969 0 0 0 6 21c1.282 0 2.47-.402 3.445-1.087.81.22 1.668.337 2.555.337Z',
+      },
+    ],
+    class: 'mt-1 h-8 w-8 shrink-0 fill-accent-600',
+    width: 24,
+    height: 24,
+    viewBox: '0 0 24 24',
+    fill: 'none',
+    strokeWidth: '1.5',
+    strokeLinecap: 'round',
+    strokeLinejoin: 'round',
+    stroke: 'currentColor',
+  },
   chevronDown: {
     paths: [
       {

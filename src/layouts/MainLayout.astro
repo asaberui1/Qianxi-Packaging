@@ -41,6 +41,13 @@ interface Props {
     <script>
       import '@scripts/lenisSmoothScroll.js';
     </script>
+    <script>
+      (window as any).QIANXI_CONFIG = {
+        apiUrl: '',
+        recaptchaSiteKey: '',
+        googleMapsApiKey: '',
+      };
+    </script>
   </head>
   <body
     class="flex min-h-screen flex-col bg-gray-100 selection:bg-accent-600 selection:text-white"

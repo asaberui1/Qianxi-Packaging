@@ -1,5 +1,6 @@
 ---
 import ImagePlaceholder from '@components/ImagePlaceholder.astro';
+import Icon from '@components/ui/icons/Icon.astro';
 import type { SiteTranslations } from '@/i18n/types';
 
 const { t } = Astro.props;
@@ -24,17 +25,17 @@ interface Props { t: SiteTranslations; }
 <!-- Trust Cards -->
 <div class="-mt-10 relative z-10 mx-auto grid max-w-4xl gap-6 px-4 sm:grid-cols-3">
   <div class="rounded-xl bg-white p-6 text-center shadow-lg">
-    <div class="mb-3 text-3xl">🏭</div>
+    <Icon name="factory" class="mb-3 h-10 w-10 text-accent-600" />
     <h3 class="text-lg font-bold text-primary-800" style="font-family: var(--font-heading);">{t.home.trustCard1Title}</h3>
     <p class="mt-2 text-sm text-gray-600">{t.home.trustCard1Desc}</p>
   </div>
   <div class="rounded-xl bg-white p-6 text-center shadow-lg">
-    <div class="mb-3 text-3xl">⚙️</div>
+    <Icon name="equipment" class="mb-3 h-10 w-10 text-accent-600" />
     <h3 class="text-lg font-bold text-primary-800" style="font-family: var(--font-heading);">{t.home.trustCard2Title}</h3>
     <p class="mt-2 text-sm text-gray-600">{t.home.trustCard2Desc}</p>
   </div>
   <div class="rounded-xl bg-white p-6 text-center shadow-lg">
-    <div class="mb-3 text-3xl">🌍</div>
+    <Icon name="earth" class="mb-3 h-10 w-10 text-accent-600" />
     <h3 class="text-lg font-bold text-primary-800" style="font-family: var(--font-heading);">{t.home.trustCard3Title}</h3>
     <p class="mt-2 text-sm text-gray-600">{t.home.trustCard3Desc}</p>
   </div>
