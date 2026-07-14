@@ -1,0 +1,191 @@
+---
+import type { SiteTranslations } from '@/i18n/types';
+const { t, lang = 'en' } = Astro.props;
+interface Props { t: SiteTranslations; lang?: string; }
+---
+
+<section class="py-20 bg-gray-50">
+  <div class="mx-auto max-w-7xl px-4">
+    <h2 class="mb-12 text-center text-3xl font-extrabold text-primary-900" style="font-family: var(--font-heading);">
+      {lang === 'zh' ? '工厂配置与环保工程' : 'Factory Configuration & Environmental Engineering'}
+    </h2>
+
+    <!-- Production Area -->
+    <div class="mb-8 rounded-xl bg-white p-6 shadow-sm">
+      <h3 class="mb-4 text-lg font-bold text-primary-800" style="font-family: var(--font-heading);">
+        {lang === 'zh' ? '主体工程 — 生产区（300 m²）' : 'Main Production Area (300 m²)'}
+      </h3>
+      <p class="text-sm text-gray-600 leading-relaxed">
+        {lang === 'zh'
+          ? '本项目主要在已建厂房基础上进行生产线布置和设备安装，不涉及土建工程。生产区位于车间北侧，自北向南依次布置印刷区、堆码区、组装区和打包区。'
+          : 'This project involves production line layout and equipment installation within an existing factory building, with no civil engineering works. The production area occupies the north side of the workshop, arranged north to south: Printing Zone, Stacking Zone, Assembly Zone, and Packing Zone.'}
+      </p>
+    </div>
+
+    <!-- Auxiliary & Storage -->
+    <div class="mb-8 rounded-xl bg-white p-6 shadow-sm">
+      <h3 class="mb-4 text-lg font-bold text-primary-800" style="font-family: var(--font-heading);">
+        {lang === 'zh' ? '辅助及仓储工程' : 'Auxiliary & Storage Facilities'}
+      </h3>
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 text-sm">
+        <div class="rounded-lg bg-gray-100 p-4">
+          <span class="font-semibold text-primary-800">{lang === 'zh' ? '原材料库' : 'Raw Materials Warehouse'}</span>
+          <p class="text-gray-600">200 m² — {lang === 'zh' ? '车间北侧' : 'North side of workshop'}</p>
+        </div>
+        <div class="rounded-lg bg-gray-100 p-4">
+          <span class="font-semibold text-primary-800">{lang === 'zh' ? '半成品区' : 'Semi-finished Area'}</span>
+          <p class="text-gray-600">80 m² — {lang === 'zh' ? '车间中部' : 'Central workshop'}</p>
+        </div>
+        <div class="rounded-lg bg-gray-100 p-4">
+          <span class="font-semibold text-primary-800">{lang === 'zh' ? '预存区' : 'Pre-storage Area'}</span>
+          <p class="text-gray-600">100 m² — {lang === 'zh' ? '车间中部' : 'Central workshop'}</p>
+        </div>
+        <div class="rounded-lg bg-gray-100 p-4">
+          <span class="font-semibold text-primary-800">{lang === 'zh' ? '成品区' : 'Finished Products Area'}</span>
+          <p class="text-gray-600">200 m² — {lang === 'zh' ? '车间南侧' : 'South side of workshop'}</p>
+        </div>
+        <div class="rounded-lg bg-gray-100 p-4">
+          <span class="font-semibold text-primary-800">{lang === 'zh' ? '辅料库' : 'Auxiliary Materials Warehouse'}</span>
+          <p class="text-gray-600">100 m² — {lang === 'zh' ? '东侧中部（储存白乳胶和油墨，重点防渗）' : 'East-central (white latex & ink storage, impermeable)'}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Office -->
+    <div class="mb-8 rounded-xl bg-white p-6 shadow-sm">
+      <h3 class="mb-4 text-lg font-bold text-primary-800" style="font-family: var(--font-heading);">
+        {lang === 'zh' ? '办公及生活设施' : 'Office & Living Facilities'}
+      </h3>
+      <p class="text-sm text-gray-600">
+        {lang === 'zh'
+          ? '位于车间东侧的办公室（60 m²）和卫生间。'
+          : 'Office (60 m²) and restroom located on the east side of the workshop.'}
+      </p>
+    </div>
+
+    <!-- Utilities -->
+    <div class="mb-8 rounded-xl bg-white p-6 shadow-sm">
+      <h3 class="mb-4 text-lg font-bold text-primary-800" style="font-family: var(--font-heading);">
+        {lang === 'zh' ? '公用工程' : 'Utilities'}
+      </h3>
+      <p class="text-sm text-gray-600 leading-relaxed">
+        {lang === 'zh'
+          ? '供水、供电及厂内雨污水管网、道路等基础设施均依托园区既有设施。'
+          : 'Water supply, power supply, stormwater/sewage networks, and road infrastructure all rely on the existing park facilities.'}
+      </p>
+    </div>
+
+    <!-- Environmental Protection -->
+    <div class="mb-8 rounded-xl bg-white p-6 shadow-sm">
+      <h3 class="mb-4 text-lg font-bold text-primary-800" style="font-family: var(--font-heading);">
+        {lang === 'zh' ? '环保工程' : 'Environmental Protection'}
+      </h3>
+      <div class="space-y-4 text-sm text-gray-600">
+        <div>
+          <span class="font-semibold text-primary-800">{lang === 'zh' ? '固废管理：' : 'Solid Waste: '}</span>
+          {lang === 'zh'
+            ? '新建一般固废暂存区（10 m²）和生活垃圾收集桶；新建危废暂存间（5 m²），满足重点防渗要求。'
+            : 'New general solid waste storage area (10 m²) and household waste bins; new hazardous waste storage room (5 m²) with impermeable treatment.'}
+        </div>
+        <div>
+          <span class="font-semibold text-primary-800">{lang === 'zh' ? '废水治理：' : 'Wastewater Treatment: '}</span>
+          {lang === 'zh'
+            ? '依托园区预处理池（50 m³），新建隔油池（0.5 m³）处理车间清洗及洗手废水；新建一体化废水处理系统（1 m³/天）处理印刷废水，经处理后回用。'
+            : 'Uses park pre-treatment tank (50 m³), new oil separator (0.5 m³) for workshop cleaning/washing wastewater; new integrated wastewater treatment system (1 m³/day) for printing wastewater with reuse after treatment.'}
+        </div>
+        <div>
+          <span class="font-semibold text-primary-800">{lang === 'zh' ? '废气治理：' : 'Exhaust Gas Treatment: '}</span>
+          {lang === 'zh'
+            ? '印刷及粘箱废气经集气罩收集后通过二级活性炭装置处理，由15米高排气筒（DA001）排放；裁纸废气产生量极少，通过加强通风处理。'
+            : 'Printing and box-gluing exhaust collected via hoods, treated through two-stage activated carbon unit, discharged via 15m stack (DA001); paper cutting emissions minimal, managed by enhanced ventilation.'}
+        </div>
+        <div>
+          <span class="font-semibold text-primary-800">{lang === 'zh' ? '土壤及地下水防治：' : 'Soil & Groundwater Protection: '}</span>
+          {lang === 'zh'
+            ? '危废间和辅料库为新建重点防渗区，其余区域依托或利用现有防渗硬化地面。'
+            : 'Hazardous waste room and auxiliary materials warehouse are new key impermeable zones; other areas use existing impermeable hardened flooring.'}
+        </div>
+      </div>
+    </div>
+
+    <!-- Environmental Impacts -->
+    <div class="mb-8 rounded-xl bg-white p-6 shadow-sm">
+      <h3 class="mb-4 text-lg font-bold text-primary-800" style="font-family: var(--font-heading);">
+        {lang === 'zh' ? '环境影响' : 'Environmental Impacts'}
+      </h3>
+      <div class="grid gap-4 sm:grid-cols-2 text-sm">
+        <div>
+          <span class="font-semibold text-primary-800">{lang === 'zh' ? '施工期：' : 'Construction Phase: '}</span>
+          <span class="text-gray-600">{lang === 'zh' ? '装修噪声、颗粒物及废包装材料。' : 'Renovation noise, particulate matter, and waste packaging materials.'}</span>
+        </div>
+        <div>
+          <span class="font-semibold text-primary-800">{lang === 'zh' ? '运营期：' : 'Operation Phase: '}</span>
+          <span class="text-gray-600">{lang === 'zh' ? '生产噪声、废边角料、废包装材料、各类危险废物、有机废气、粉尘以及生活污水和清洗废水等。' : 'Production noise, scrap materials, waste packaging, hazardous wastes, organic exhaust gas, dust, domestic wastewater, and cleaning wastewater.'}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Equipment List -->
+    <div class="rounded-xl bg-white p-6 shadow-sm">
+      <h3 class="mb-4 text-lg font-bold text-primary-800" style="font-family: var(--font-heading);">
+        {lang === 'zh' ? '主要生产设备' : 'Main Production Equipment'}
+      </h3>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b border-gray-200 text-left">
+              <th class="py-2 font-semibold text-primary-800">{lang === 'zh' ? '设备名称' : 'Equipment'}</th>
+              <th class="py-2 font-semibold text-primary-800">{lang === 'zh' ? '型号' : 'Model'}</th>
+              <th class="py-2 font-semibold text-primary-800">{lang === 'zh' ? '数量' : 'Qty'}</th>
+              <th class="py-2 font-semibold text-primary-800">{lang === 'zh' ? '用途' : 'Purpose'}</th>
+            </tr>
+          </thead>
+          <tbody class="text-gray-600">
+            <tr class="border-b border-gray-100">
+              <td class="py-2">{lang === 'zh' ? '高速四色印刷模切开槽机' : 'High-Speed 4-Color Printer Slotter'}</td>
+              <td class="py-2">1228</td>
+              <td class="py-2">1</td>
+              <td class="py-2">{lang === 'zh' ? '纸张印刷、模切与开槽' : 'Printing, die-cutting & slotting'}</td>
+            </tr>
+            <tr class="border-b border-gray-100">
+              <td class="py-2">{lang === 'zh' ? '全自动粘钉一体机' : 'Auto Gluer-Stitcher'}</td>
+              <td class="py-2">2800</td>
+              <td class="py-2">1</td>
+              <td class="py-2">{lang === 'zh' ? '纸板折叠粘合或装订' : 'Folding, gluing or stitching'}</td>
+            </tr>
+            <tr class="border-b border-gray-100">
+              <td class="py-2">{lang === 'zh' ? '堆码机' : 'Stacker'}</td>
+              <td class="py-2">1228</td>
+              <td class="py-2">1</td>
+              <td class="py-2">{lang === 'zh' ? '纸张堆叠整理' : 'Sheet stacking & organizing'}</td>
+            </tr>
+            <tr class="border-b border-gray-100">
+              <td class="py-2">{lang === 'zh' ? '全自动结束带打包机' : 'Auto Strapping Machine'}</td>
+              <td class="py-2">1400</td>
+              <td class="py-2">1</td>
+              <td class="py-2">{lang === 'zh' ? '整垛纸箱捆扎打包' : 'Pallet strapping'}</td>
+            </tr>
+            <tr class="border-b border-gray-100">
+              <td class="py-2">{lang === 'zh' ? '地牛叉车' : 'Pallet Jack'}</td>
+              <td class="py-2">3T</td>
+              <td class="py-2">5</td>
+              <td class="py-2">{lang === 'zh' ? '物料搬运' : 'Material handling'}</td>
+            </tr>
+            <tr class="border-b border-gray-100">
+              <td class="py-2">{lang === 'zh' ? '螺杆空压机' : 'Screw Air Compressor'}</td>
+              <td class="py-2">15 kW</td>
+              <td class="py-2">1</td>
+              <td class="py-2">{lang === 'zh' ? '提供压缩空气' : 'Compressed air supply'}</td>
+            </tr>
+            <tr>
+              <td class="py-2">{lang === 'zh' ? '一体化污水处理装置' : 'Integrated Wastewater Treatment'}</td>
+              <td class="py-2">1T</td>
+              <td class="py-2">1</td>
+              <td class="py-2">{lang === 'zh' ? '印刷废水处理' : 'Printing wastewater treatment'}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>

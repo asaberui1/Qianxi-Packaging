@@ -2,7 +2,6 @@
 import MainLayout from '@/layouts/MainLayout.astro';
 import InquiryForm from '@components/sections/contact/InquiryForm.astro';
 import ContactSidebar from '@components/sections/contact/ContactSidebar.astro';
-import GoogleMapEmbed from '@components/sections/contact/GoogleMapEmbed.astro';
 import { getTranslations } from '@/i18n/utils';
 
 const t = getTranslations('zh');
@@ -24,5 +23,4 @@ const t = getTranslations('zh');
       </div>
     </div>
   </section>
-  <GoogleMapEmbed />
 </MainLayout>
