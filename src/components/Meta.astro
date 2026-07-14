@@ -54,13 +54,15 @@ function createHref(lang: string, prefix: string, path: string): string {
   const cleanPath = path.replace(/^\/(zh|en)\//, '/');
 
   // Add the correct language prefix if needed
-  const basePath = prefix ? `/${prefix}${cleanPath}` : cleanPath;
-  const normalizedBasePath = basePath.replace(/\/\/+/g, '/');
+  const hrefPath = prefix ? `/${prefix}${cleanPath}` : cleanPath;
+  const normalizedPath = hrefPath.replace(/\/\/+/g, '/');
 
-  return `${siteURL.slice(0, -1)}${normalizedBasePath}`;
+  return `${siteURL.slice(0, -1)}${base}${normalizedPath}`;
 }
 
 const fullPath: string = Astro.url.pathname;
+// Strip the Astro base path to get the relative page path
+const relPath = base ? fullPath.replace(new RegExp(`^${base}`), '') || '/' : fullPath;
 
 // Generate and optimize the favicon images
 const faviconSvg = await getImage({
@@ -96,7 +98,7 @@ const appleTouchIcon = await getImage({
 <link rel="canonical" href={canonical} />
 {
   Object.entries(languages).map(([lang, prefix]) => {
-    const cleanPath = fullPath.replace(/^\/(zh|en)\//, '/');
+    const cleanPath = relPath.replace(/^\/(zh|en)\//, '/');
     const href = createHref(lang, prefix, cleanPath);
     return <link rel="alternate" hreflang={lang} href={href} />;
   })
@@ -105,7 +107,7 @@ const appleTouchIcon = await getImage({
 {/* Facebook Meta Tags */}
 <meta
   property="og:locale"
-  content={basePath.startsWith('/zh') ? 'zh_CN' : 'en_US'}
+  content={relPath.startsWith('/zh') ? 'zh_CN' : 'en_US'}
 />
 <meta property="og:url" content={siteURL} />
 <meta property="og:type" content="website" />
