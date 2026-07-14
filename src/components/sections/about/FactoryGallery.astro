@@ -1,0 +1,19 @@
+---
+import ImagePlaceholder from '@components/ImagePlaceholder.astro';
+import type { SiteTranslations } from '@i18n/types';
+const { t } = Astro.props;
+interface Props { t: SiteTranslations; }
+---
+
+<section class="py-20 bg-gray-50">
+  <div class="mx-auto max-w-7xl px-4">
+    <h2 class="mb-12 text-center text-3xl font-extrabold text-primary-900" style="font-family: var(--font-heading);">
+      {t.about.galleryTitle}
+    </h2>
+    <div class="grid gap-6 md:grid-cols-3">
+      <ImagePlaceholder label={t.about.workshopLabel} height="h-56" />
+      <ImagePlaceholder label={t.about.warehouseLabel} height="h-56" />
+      <ImagePlaceholder label={t.about.qcLabLabel} height="h-56" />
+    </div>
+  </div>
+</section>

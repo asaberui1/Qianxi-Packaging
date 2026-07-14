@@ -1,0 +1,35 @@
+---
+import type { SiteTranslations } from '@i18n/types';
+const { t } = Astro.props;
+interface Props { t: SiteTranslations; }
+---
+
+<section class="py-20">
+  <div class="mx-auto max-w-7xl px-4">
+    <h2 class="mb-12 text-center text-3xl font-extrabold text-primary-900" style="font-family: var(--font-heading);">
+      {t.about.certificationsTitle}
+    </h2>
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      <div class="rounded-xl border border-gray-200 bg-white p-8 text-center">
+        <div class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-lg border-2 border-dashed border-gray-300 text-xs text-gray-400">[ISO Logo]</div>
+        <h3 class="text-lg font-bold text-primary-800" style="font-family: var(--font-heading);">{t.about.certISO}</h3>
+        <p class="mt-2 text-sm text-gray-600">{t.about.certISODesc}</p>
+      </div>
+      <div class="rounded-xl border border-gray-200 bg-white p-8 text-center">
+        <div class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-lg border-2 border-dashed border-gray-300 text-xs text-gray-400">[FSC Logo]</div>
+        <h3 class="text-lg font-bold text-primary-800" style="font-family: var(--font-heading);">{t.about.certFSC}</h3>
+        <p class="mt-2 text-sm text-gray-600">{t.about.certFSCDesc}</p>
+      </div>
+      <div class="rounded-xl border border-gray-200 bg-white p-8 text-center">
+        <div class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-lg border-2 border-dashed border-gray-300 text-xs text-gray-400">[SGS Logo]</div>
+        <h3 class="text-lg font-bold text-primary-800" style="font-family: var(--font-heading);">{t.about.certSGS}</h3>
+        <p class="mt-2 text-sm text-gray-600">{t.about.certSGSDesc}</p>
+      </div>
+      <div class="rounded-xl border border-gray-200 bg-white p-8 text-center">
+        <div class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-lg border-2 border-dashed border-gray-300 text-xs text-gray-400">[REACH Logo]</div>
+        <h3 class="text-lg font-bold text-primary-800" style="font-family: var(--font-heading);">{t.about.certREACH}</h3>
+        <p class="mt-2 text-sm text-gray-600">{t.about.certREACHDesc}</p>
+      </div>
+    </div>
+  </div>
+</section>

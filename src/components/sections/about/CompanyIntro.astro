@@ -1,0 +1,36 @@
+---
+import ImagePlaceholder from '@components/ImagePlaceholder.astro';
+import type { SiteTranslations } from '@i18n/types';
+const { t } = Astro.props;
+interface Props { t: SiteTranslations; }
+---
+
+<section class="py-20">
+  <div class="mx-auto max-w-7xl px-4">
+    <div class="grid items-center gap-12 lg:grid-cols-2">
+      <div>
+        <h1 class="mb-6 text-4xl font-extrabold text-primary-900" style="font-family: var(--font-heading);">
+          {t.about.introHeading}
+        </h1>
+        <p class="mb-8 text-lg leading-relaxed text-gray-600">
+          {t.about.introText}
+        </p>
+        <div class="grid grid-cols-3 gap-4">
+          <div class="rounded-lg bg-gray-100 p-4 text-center">
+            <div class="text-3xl font-extrabold text-accent-600" style="font-family: var(--font-heading);">XX+</div>
+            <div class="mt-1 text-xs text-gray-500">{t.about.yearsExperience}</div>
+          </div>
+          <div class="rounded-lg bg-gray-100 p-4 text-center">
+            <div class="text-3xl font-extrabold text-accent-600" style="font-family: var(--font-heading);">XX</div>
+            <div class="mt-1 text-xs text-gray-500">{t.about.exportCountries}</div>
+          </div>
+          <div class="rounded-lg bg-gray-100 p-4 text-center">
+            <div class="text-3xl font-extrabold text-accent-600" style="font-family: var(--font-heading);">XXk</div>
+            <div class="mt-1 text-xs text-gray-500">{t.about.annualCapacity}</div>
+          </div>
+        </div>
+      </div>
+      <ImagePlaceholder label="[Factory exterior photo — modern building with company sign]" height="h-80" />
+    </div>
+  </div>
+</section>
